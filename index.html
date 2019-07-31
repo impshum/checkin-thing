@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bulma</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css">
+  <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+
+  <section class="hero is-fullheight">
+    <div class="hero-head">
+      <nav class="tabs is-boxed is-fullwidth">
+        <div class="container">
+          <ul>
+            <li class=""><a id="home_btn" class="button is-menu is-large has-text-weight-semibold"><i class="fas fa-home"></i></a></li>
+            <li class="has-text-centered is-size-3 has-text-weight-semibold">
+              <span id="clock" class="clock">00:00</span>
+            </li>
+            <li class=""><a id="help_btn" class="button is-menu is-large has-text-weight-semibold"><i class="far fa-question-circle"></i></a></li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+
+    <div class="hero-body">
+      <div class="container">
+        <div class="columns">
+          <div class="column">
+
+            <div class="content has-text-centered">
+              <h1 id="title" class="is-size-2 has-text-weight-bold"><i class="fas fa-6x fa-lg fa-car check_in_car"></i><br>Please register your vehicle</h1>
+              <span id="appname"></span>
+            </div>
+
+            <form id="check_in" class="hidden">
+
+              <div class="columns is-centered">
+                <div class="column is-8-desktop">
+
+                  <div class="field">
+                    <label class="label is-size-5">Name</label>
+                    <div class="control">
+                      <input class="input is-large is-capitalized" type="text" name="name" required>
+                    </div>
+                  </div>
+
+                  <div class="field">
+                    <label class="label is-size-5">Company</label>
+                    <div class="control">
+                      <input class="input is-large is-capitalized" type="text" name="company" required>
+                    </div>
+                  </div>
+
+                  <div class="field">
+                    <label class="label is-size-5">License Number</label>
+                    <div class="control">
+                      <input class="input is-large is-uppercase" type="text" name="license" required>
+                    </div>
+                  </div>
+
+                  <br>
+                  <div class="columns is-centered">
+                    <div class="column is-3-desktop">
+                      <div class="field">
+                        <div class="control">
+                          <input class="button is-large is-fullwidth submit has-text-weight-semibold" type="submit" value="Submit">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </form>
+
+            <form id="express" class="hidden">
+
+              <div class="columns is-centered">
+                <div class="column is-8-desktop">
+
+                  <div class="field">
+                    <label class="label is-size-5">Code</label>
+                    <div class="control">
+                      <input class="input is-large is-capitalized" type="text" name="express_code" required>
+                    </div>
+                  </div>
+
+                  <br>
+                  <div class="columns is-centered">
+                    <div class="column is-3-desktop">
+                      <div class="field">
+                        <div class="control">
+                          <input class="button is-large is-fullwidth submit has-text-weight-semibold" type="submit" value="Submit">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </form>
+
+
+            <div id="check_out" class="hidden pager">
+              <div class="table-container">
+                <table class="table is-bordered is-striped is-hoverable is-fullwidth">
+                  <thead>
+                    <tr>
+                      <th class="is-hidden-mobile">Status</th>
+                      <th class='is-hidden-mobile'>Name</th>
+                      <th class="is-hidden-mobile">Company</th>
+                      <th>License Number</th>
+                      <th class="is-hidden-mobile">Express Code</th>
+                      <th class="is-hidden-mobile">Date</th>
+                      <th class='is-hidden-mobile'>Time In</th>
+                      <th>Check Out</th>
+                    </tr>
+                  </thead>
+                  <tbody id="search_results"></tbody>
+                </table>
+              </div>
+            </div>
+
+            <div id="help" class="hidden pager">
+              <div class="columns is-centered">
+                <div class="column is-8-desktop">
+                  <div class="card">
+                    <div class="card-content">
+                      <div class="content">
+                        <h4>What is this?</h4>
+                        <p>This software allows users to check in and out of car parking areas. There is no time limit so stay as long as you like, just try your best to remember to check out when you go home. If you do forget you will be
+                          automatically checked out at midnight.</p>
+                        <h4>What is Express?</h4>
+                        <p>The first time you register you will be given a special code which is tied to your name, company and license plate number. Use this code to check in and out really fast so you can get on with your day. If you forget it
+                          just check in as usual and if your details are the same as last time you will use your old code. If your details are the same, e.g. a different license number, another will be created.</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <section id="results" class="hero is-fullheight">
+              <div class="hero-body">
+                <div class="container">
+                  <div class="card">
+                    <div class="card-content">
+                      <div class="content has-text-centered">
+                        <br>
+                        <i class="far fa-6x fa-smile"></i>
+                        <h1>Don't forget to check out on your way home</h1>
+                        <h3>Express Code: <span id="code">...</span></h3>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <section id="express_results" class="hero is-fullheight">
+              <div class="hero-body">
+                <div class="container">
+                  <div class="card">
+                    <div class="card-content">
+                      <div class="content has-text-centered">
+                        <br>
+                        <i class="far fa-6x fa-smile"></i>
+                        <h1 id="express_msg"></h1>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <section id="checked_out" class="hero is-fullheight">
+              <div class="hero-body">
+                <div class="container">
+                  <div class="card">
+                    <div class="card-content">
+                      <div class="content has-text-centered">
+                        <br>
+                        <i class="far fa-6x fa-smile-wink"></i>
+                        <h1>Have a lovely day!</h1>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <section id="confirm" class="hero is-fullheight">
+              <div class="hero-body">
+                <div class="container">
+                  <div class="card">
+                    <div class="card-content">
+                      <div class="content has-text-centered">
+                        <i class="fas fa-6x fa-sign-out-alt"></i>
+                        <h1>Are you sure you want to check out?</h1>
+                      </div>
+                      <br>
+                      <div class="columns is-centered is-mobile">
+                        <div class="column is-6-touch is-3-desktop">
+                          <div class="field">
+                            <div class="control">
+                              <a class="button is-large is-fullwidth has-text-weight-semibold is-menu do_confirm">YES</a>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="column is-6-touch is-3-desktop">
+                          <div class="field">
+                            <div class="control">
+                              <a class="button is-large is-fullwidth has-text-weight-semibold is-menu close_confirm">NO</a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-foot">
+      <nav class="tabs is-boxed is-fullwidth">
+        <div class="container">
+          <ul>
+            <li class=""><a id="check_in_btn" class="button is-menu is-large has-text-weight-semibold"><span class="is-hidden-touch">Check In</span><span class="is-hidden-desktop"><i class="fas fa-sign-out-alt"></i></a></span></li>
+            <li class=""><a id="express_btn" class="button is-menu is-large has-text-weight-semibold"><i class="fas fa-bolt"></i></a></li>
+            <li class=""><a id="check_out_btn" class="button is-menu is-large has-text-weight-semibold"><span class="is-hidden-touch">Check Out</span><span class="is-hidden-desktop"><i class="fas fa-sign-out-alt"></i></a></span></a></li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+  </section>
+
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  <script src="js/moment.js"></script>
+  <script src="js/idle.min.js"></script>
+  <script src="js/scripts.js"></script>
+</body>
+
+</html>

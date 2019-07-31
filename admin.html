@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bulma</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css">
+  <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+
+  <section class="section">
+
+
+    <div class="container">
+      <div class="columns">
+        <div class="column">
+
+          <div id="stats" class="has-text-centered">
+            <br><br><br>
+            <nav class="level is-mobile">
+              <div class="level-item has-text-centered">
+                <div>
+                  <p class="heading">CARS NOW</p>
+                  <p class="title"><span id="cars_here"></span></p>
+                </div>
+              </div>
+              <div class="level-item has-text-centered">
+                <div>
+                  <p class="heading">TOTAL CARS</p>
+                  <p class="title"><span id="total_cars"></span></p>
+                </div>
+              </div>
+              <div class="level-item has-text-centered">
+                <div>
+                  <p class="heading">TOTAL COMPANIES</p>
+                  <p class="title"><span id="total_company"></span></p>
+                </div>
+              </div>
+              <div class="level-item has-text-centered">
+                <div>
+                  <p class="heading">TOTAL DRIVERS</p>
+                  <p class="title"><span id="total_people"></span></p>
+                </div>
+              </div>
+            </nav>
+            <br><br><br>
+          </div>
+
+          <div id="check_out" class="">
+
+            <div class="content has-text-centered">
+              <h1 id="title" class="is-size-2 has-text-weight-bold">Checked In</h1>
+            </div>
+            <br>
+            <table class="table is-bordered is-striped is-hoverable is-fullwidth">
+              <thead>
+                <tr>
+                  <th>Status</th>
+                  <th>Name</th>
+                  <th>Company</th>
+                  <th>License</th>
+                  <th>Express Code</th>
+                  <th>Date</th>
+                  <th>Time In</th>
+                  <th>Check Out</th>
+                </tr>
+              </thead>
+              <tbody id="search_results"></tbody>
+            </table>
+            <br><br>
+            <div class="content has-text-centered">
+              <h1 id="title" class="is-size-2 has-text-weight-bold">History</h1>
+            </div>
+            <br>
+            <table class="table is-bordered is-striped is-hoverable is-fullwidth">
+              <thead>
+                <tr>
+                  <th>Status</th>
+                  <th>Name</th>
+                  <th>Company</th>
+                  <th>License</th>
+                  <th>Express Code</th>
+                  <th>Date</th>
+                  <th>Time In</th>
+                  <th>Time Out</th>
+                </tr>
+              </thead>
+              <tbody id="done_results"></tbody>
+            </table>
+          </div>
+
+
+        </div>
+      </div>
+
+    </div>
+
+  </section>
+
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  <script src="js/moment.js"></script>
+  <script src="js/idle.min.js"></script>
+  <script src="js/scripts.js"></script>
+  <script>
+    get_cars();
+    get_all_cars();
+    get_stats();
+  </script>
+</body>
+
+</html>
